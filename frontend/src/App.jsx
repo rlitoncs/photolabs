@@ -16,8 +16,10 @@ const sampleDataForPhotoListItem = {
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const photos = [<PhotoListItem photo={sampleDataForPhotoListItem}/>, <PhotoListItem photo={sampleDataForPhotoListItem}/>,
-  <PhotoListItem photo={sampleDataForPhotoListItem}/>
+  const photos = 
+  [<PhotoListItem key={0} photo={sampleDataForPhotoListItem}/>, 
+  <PhotoListItem key={1} photo={sampleDataForPhotoListItem}/>,
+  <PhotoListItem key={2} photo={sampleDataForPhotoListItem}/>
   ]
   return (
     <div className="App">
