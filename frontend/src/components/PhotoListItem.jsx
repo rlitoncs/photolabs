@@ -6,7 +6,7 @@ const PhotoListItem = (props) => {
   /* Insert React */
 
   return (
-    <div>
+    <div className="photo-list__item">
       <img src={props.photo.imageSource}></img>
       <img src={props.photo.profile}></img>
       <div>{props.photo.username}</div>
