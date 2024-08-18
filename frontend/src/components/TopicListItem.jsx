@@ -5,8 +5,7 @@ import "../styles/TopicListItem.scss";
 const TopicListItem = (props) => {
   return (
     <div className="topic-list__item">
-      {/* Insert React */}
-      <div>{props.topic.slug}</div>
+      <div>{props.topic.title}</div>
     </div>
   );
 };
