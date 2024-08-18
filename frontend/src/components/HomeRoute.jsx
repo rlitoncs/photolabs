@@ -5,8 +5,8 @@ import PhotoList from 'components/PhotoList';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
-  const [isFavourite, setIsFavourite] = useState([]);
-  const handleClick = () => {
+  const [favourites, setIsFavourite] = useState([]);
+  const handleClick = (id) => {
     setIsFavourite(prevClick => !prevClick)
   }
   
@@ -15,7 +15,7 @@ const HomeRoute = (props) => {
       <TopNavigationBar topics={props.topics}/>
       <PhotoList 
         photos={props.photos} 
-        isFavourite={isFavourite} 
+        favourites={favourites} 
         toggleFavourite={handleClick}/>
     </div>
   );

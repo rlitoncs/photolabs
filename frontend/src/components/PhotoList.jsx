@@ -9,7 +9,6 @@ const PhotoList = (props) => {
         return <PhotoListItem 
                 key={photo.id} 
                 photo={photo} 
-                isFavourite={props.isFavourite}
                 toggleFavourite={props.toggleFavourite}
                 />
       })}
