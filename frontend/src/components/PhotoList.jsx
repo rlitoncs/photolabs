@@ -62,7 +62,7 @@ const PhotoList = () => {
     <ul className="photo-list">
       {/* Insert React */}
       {sampleDataForPhotoList.map(photo => {
-        <PhotoListItem photo={photo} />
+        return <PhotoListItem key={photo.id} photo={photo} />
       })}
     </ul>
   );
