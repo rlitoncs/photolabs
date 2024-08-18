@@ -6,7 +6,12 @@ const PhotoList = (props) => {
   return (
     <ul className="photo-list">
       {props.photos.map(photo => {
-        return <PhotoListItem key={photo.id} photo={photo} />
+        return <PhotoListItem 
+                key={photo.id} 
+                photo={photo} 
+                isFavourite={props.isFavourite}
+                toggleFavourite={props.toggleFavourite}
+                />
       })}
     </ul>
   );
