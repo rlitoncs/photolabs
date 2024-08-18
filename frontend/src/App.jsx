@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeRoute from './components/HomeRoute';
+import HomeRoute from './routes/HomeRoute';
 import './App.scss';
 import photos from './mocks/photos';
 import topics from './mocks/topics';

@@ -4,11 +4,11 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
-
+  // console.log('INSIDE PhotoFavButton', props.isFavourite(props.id))
   return (
     <div key={props.id} className="photo-list__fav-icon">
-      <div className="photo-list__fav-icon-svg"  onClick={() => props.toggleFavourite(props.id)}>
-        <FavIcon selected={isFavourite}/>
+      <div className="photo-list__fav-icon-svg"  onClick={() => props.toggleFavourites(props.id)}>
+        <FavIcon selected={props.isFavourite(props.id)}/>
       </div>
     </div>
   );
