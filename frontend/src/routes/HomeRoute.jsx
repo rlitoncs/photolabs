@@ -6,7 +6,6 @@ import {useState} from 'react';
 
 const HomeRoute = (props) => {
   const [favourites, setFavourites] = useState([]);
-  console.log(favourites);
   const isFavourite = (photo_id) => {
     return favourites.includes(photo_id);
   }  
@@ -18,7 +17,7 @@ const HomeRoute = (props) => {
       setFavourites([...favourites, photo_id]);
     }
   }
-  
+
   const isFavPhotoExist = favourites.length > 0;
 
   return (
