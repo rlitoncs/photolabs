@@ -7,7 +7,7 @@ const PhotoListItem = (props) => {
   // console.log(props);
   return (
     
-    <div key={props.photo.id} className="photo-list__item">
+    <div className="photo-list__item">
       <PhotoFavButton 
         id={props.photo.id}
         isFavourite={props.isFavourite}

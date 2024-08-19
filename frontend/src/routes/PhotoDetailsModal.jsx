@@ -16,7 +16,10 @@ const PhotoDetailsModal = (props) => {
       <button className="photo-details-modal__close-button" onClick={props.handleDisplayModal}>
         <img src={closeSymbol} alt="close symbol"/>
       </button>
-
+      <PhotoFavButton 
+        id={props.photo.id} 
+        isFavourite={props.isFavourite} 
+        toggleFavourites={props.toggleFavourites}/>
       <div className="photo-details-modal__images">
         <div className="photo-details-modal__image"> 
           <img src={props.photo.urls.full} />
