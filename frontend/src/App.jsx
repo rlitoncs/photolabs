@@ -13,8 +13,6 @@ const App = () => {
   const handleDisplayModal = () => {
     setDisplayModal(prev => !prev);
   }
-
-
   
   return (
     <div className="App">
