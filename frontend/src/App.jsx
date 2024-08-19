@@ -18,7 +18,7 @@ const App = () => {
     <div className="App">
       {/* { Array.from(Array(3)).map((_, index) => <PhotoListItem key={index} photo={sampleDataForPhotoListItem} />) } */}
       <HomeRoute photos={photos} topics={topics} handleDisplayModal={handleDisplayModal}/>
-      {!!displayModal && <PhotoDetailsModal/>}
+      {!!displayModal && <PhotoDetailsModal handleDisplayModal={handleDisplayModal}/>}
     </div>
   );
 };
