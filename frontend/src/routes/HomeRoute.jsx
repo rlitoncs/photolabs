@@ -34,6 +34,7 @@ const HomeRoute = (props) => {
         photos={props.photos}
         isFavourite={isFavourite}
         toggleFavourites={toggleFavourites}
+        handleDisplayModal={props.handleDisplayModal}
       />
     </div>
   );

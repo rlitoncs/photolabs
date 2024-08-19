@@ -11,6 +11,7 @@ const PhotoList = (props) => {
                 photo={photo} 
                 isFavourite={props.isFavourite}
                 toggleFavourites={props.toggleFavourites}
+                handleDisplayModal={props.handleDisplayModal}
                 />
       })}
     </ul>
