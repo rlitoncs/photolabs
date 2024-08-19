@@ -9,10 +9,13 @@ import topics from './mocks/topics';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   const [displayModal, setDisplayModal] = useState(false);
+  const [displayPhoto, setDisplayPhoto] = useState({});
 
-  const handleDisplayModal = () => {
+  const handleDisplayModal = (photoObj) => {
     setDisplayModal(prev => !prev);
+    setDisplayPhoto({...photoObj})
   }
+
   
   return (
     <div className="App">
@@ -21,7 +24,6 @@ const App = () => {
       {!!displayModal && 
       <PhotoDetailsModal 
         handleDisplayModal={handleDisplayModal}
-        photo={photos}
         />
       }
     </div>
