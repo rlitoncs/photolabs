@@ -5,6 +5,10 @@ import PhotoList from 'components/PhotoList';
 
 
 const PhotoDetailsModal = (props) => {
+  const similarPhotos = props.photo.similar_photos;
+  const similarPhotosArr = Object.keys(similarPhotos).map(key => {
+    return similarPhotos[key]
+  })
 
   return (
     <div className="photo-details-modal">
@@ -23,6 +27,11 @@ const PhotoDetailsModal = (props) => {
             {props.photo.location.city}, {props.photo.location.country}
           </div>
         </div>
+      </div>
+
+      <div className="photo-details-modal__images">
+        <PhotoList photos={similarPhotosArr}/>
+
       </div>
     </div>
   )

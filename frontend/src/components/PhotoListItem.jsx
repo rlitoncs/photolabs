@@ -4,6 +4,7 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from './PhotoFavButton'
 
 const PhotoListItem = (props) => {
+  // console.log(props);
   return (
     
     <div key={props.photo.id} className="photo-list__item">
