@@ -19,7 +19,7 @@ const PhotoDetailsModal = (props) => {
 
       <div className="photo-details-modal__images">
         <div className="photo-details-modal__image"> 
-          <img src={props.photo.urls.regular} />
+          <img src={props.photo.urls.full} />
         </div>
 
         <div className="photo-details-modal__photographer-details" >
