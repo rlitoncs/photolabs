@@ -12,37 +12,56 @@ const PhotoDetailsModal = (props) => {
   })
 
   return (
+    // Modal Container
     <div className="photo-details-modal">
+
+      {/* Close Button */}
       <button className="photo-details-modal__close-button" onClick={props.handleDisplayModal}>
         <img src={closeSymbol} alt="close symbol"/>
       </button>
+
+      {/* Favourite Button */}
       <PhotoFavButton 
         id={props.photo.id} 
         isFavourite={props.isFavourite} 
         toggleFavourites={props.toggleFavourites}/>
-      <div className="photo-details-modal__images">
-        <div className="photo-details-modal__image"> 
-          <img src={props.photo.urls.full} />
-        </div>
 
+      {/* Images Container */}
+      <div className="photo-details-modal__images">
+
+        {/* Image Selected in Modal*/}
+        <img className="photo-details-modal__image" 
+          src={props.photo.urls.full} 
+        />
+        
+        {/* Photographer Details Container */}
         <div className="photo-details-modal__photographer-details" >
-          <img className="photo-list__user-profile" src={props.photo.user.profile}></img>
-          <div className="photo-list__user-info" >
-            <span>{props.photo.user.username}</span>
-            <div className="photo-list__user-location">
-              {props.photo.location.city}, {props.photo.location.country}
+          <div className="photo-list__user-details">
+            <img 
+              className="photo-list__user-profile" 
+              src={props.photo.user.profile}>
+            </img>
+            <div className="photo-list__user-info" >
+              <span>{props.photo.user.username}</span>
+              <div className="photo-list__user-location">
+                {props.photo.location.city}, {props.photo.location.country}
+              </div>
             </div>
           </div>
         </div>
-      
-        <div className="photo-details-modal__header">Similar Photos</div>
+
+        {/* Similar Photo Header */}
+        <div className="photo-details-modal__header">
+          <strong>Similar Photos</strong>
+        </div>
       </div>
 
       <div className="photo-details-modal__top-bar">
         <PhotoList 
           isFavourite={props.isFavourite} 
           toggleFavourites={props.toggleFavourites} 
-          photos={similarPhotosArr}/>
+          photos={similarPhotosArr}
+          />
       </div>
 
     </div>
