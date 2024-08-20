@@ -11,13 +11,18 @@ import useApplicationData from 'hooks/useApplicationData';
 const App = () => {
   const {
     state,
-    toggleFavourites,
-    isFavourite,
-    isFavPhotoExist,
-    handleDisplayModal
+    updateToFavPhotoIds,
+    setPhotoSelected,
+    onClosePhotoDetailsModal
   } = useApplicationData();
 
+  //Returns true or false if current photo is favourited in the array
+  const isFavourite = (photo_id) => {
+    return state.favourites.includes(photo_id);
+  }  
 
+  // Adds a notification at topNavBar if there is at least 1 favourite photo
+  const isFavPhotoExist = state.favourites.length > 0;
   
   return (
     <div className="App">
@@ -26,18 +31,18 @@ const App = () => {
       photos={photos} 
       topics={topics}
       isFavourite={isFavourite}
-      toggleFavourites={toggleFavourites}
+      toggleFavourites={updateToFavPhotoIds}
       isFavPhotoExist={isFavPhotoExist}
-      handleDisplayModal={handleDisplayModal}
+      setPhotoSelected={setPhotoSelected}
       />
       
       
-      {!!state.displayModal && 
+      {state.displayModal && 
         <PhotoDetailsModal 
-          handleDisplayModal={handleDisplayModal}
-          photo={displayPhoto}
+          onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+          photo={state.displayPhoto}
           isFavourite={isFavourite}
-          toggleFavourites={toggleFavourites}
+          toggleFavourites={updateToFavPhotoIds}
         />
       }
     </div>

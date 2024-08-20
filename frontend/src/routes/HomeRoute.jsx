@@ -16,7 +16,7 @@ const HomeRoute = (props) => {
         photos={props.photos}
         isFavourite={props.isFavourite}
         toggleFavourites={props.toggleFavourites}
-        handleDisplayModal={props.handleDisplayModal}
+        setPhotoSelected={props.setPhotoSelected}
       />
     </div>
   );
