@@ -40,7 +40,7 @@ const App = () => {
       {state.displayModal && 
         <PhotoDetailsModal 
           onClosePhotoDetailsModal={onClosePhotoDetailsModal}
-          photo={state.displayPhoto}
+          photo={state.selectPhoto}
           isFavourite={isFavourite}
           toggleFavourites={updateToFavPhotoIds}
         />
