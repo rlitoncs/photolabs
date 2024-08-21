@@ -20,14 +20,14 @@ const PhotoDetailsModal = (props) => {
         <img src={closeSymbol} alt="close symbol"/>
       </button>
 
-      {/* Favourite Button */}
-      <PhotoFavButton 
-        id={props.photo.id} 
-        isFavourite={props.isFavourite} 
-        toggleFavourites={props.toggleFavourites}/>
-
       {/* Images Container */}
       <div className="photo-details-modal__images">
+
+        {/* Favourite Button */}
+        <PhotoFavButton 
+          id={props.photo.id} 
+          isFavourite={props.isFavourite} 
+          toggleFavourites={props.toggleFavourites}/>
 
         {/* Image Selected in Modal*/}
         <img className="photo-details-modal__image" 
