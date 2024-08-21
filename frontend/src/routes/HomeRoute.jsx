@@ -12,6 +12,7 @@ const HomeRoute = (props) => {
         topics={props.topics}
         isFavPhotoExist={props.isFavPhotoExist}
         getPhotosByTopics={props.getPhotosByTopics}
+        getPhotosByNavBar={props.getPhotosByNavBar}
         />
       <PhotoList 
         photos={props.photos}

@@ -6,7 +6,8 @@ const INITIAL_STATE = {
   selectPhoto: {},
   photoData: [],
   topicData: [],
-  topicState: null
+  topicState: null,
+  navBarLogo: true
 }
 
 export const ACTIONS = {
@@ -15,6 +16,7 @@ export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SET_TOPIC_STATE: 'SET_TOPIC_STATE',
+  SET_NAV_BAR: 'SET_NAV_BAR',
   SELECT_PHOTO: 'SELECT_PHOTO',
   CLOSE_PHOTO: 'CLOSE_PHOTO',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
@@ -42,6 +44,9 @@ function reducer(state, action) {
     
     case ACTIONS.SET_TOPIC_STATE:
       return {...state, topicState: action.payload};
+    
+    case ACTIONS.SET_NAV_BAR:
+      return {...state, navBarLogo: action.payload};
 
     default:
       throw new Error(
@@ -57,12 +62,15 @@ const useApplicationData = () => {
 
   //useEffect: photos 
   useEffect(() => {
-    fetch('/api/photos')
-      .then(response => response.json())
-      .then(data => {
-        dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: data});
-      });
-  }, []);
+    if (state.navBarLogo){
+      fetch('/api/photos')
+        .then(response => response.json())
+        .then(data => {
+          dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: data});
+          dispatch({type: ACTIONS.SET_TOPIC_STATE, payload: null})
+        });
+    }
+  }, [state.navBarLogo]);
 
   //useEffect: topics
   useEffect(() => {
@@ -81,14 +89,22 @@ const useApplicationData = () => {
         .then(response => response.json())
         .then(data => {
           dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: data})
+          dispatch({type: ACTIONS.SET_NAV_BAR, payload: false})
         })
     }
 
   }, [state.topicState])
 
+  
+  // Change topic state when selected
   const getPhotosByTopics = (topic_id) => {
     //dispatch and change the topic state
     dispatch({type: ACTIONS.SET_TOPIC_STATE, payload: topic_id});
+  }
+
+  // Change nav logo state when selected
+  const getPhotosByNavBar = () => {
+    dispatch({type: ACTIONS.SET_NAV_BAR, payload: true});
   }
 
 
@@ -117,7 +133,8 @@ const useApplicationData = () => {
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotoDetailsModal,
-    getPhotosByTopics
+    getPhotosByTopics,
+    getPhotosByNavBar
   }
 }
 

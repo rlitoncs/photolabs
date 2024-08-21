@@ -12,7 +12,8 @@ const App = () => {
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotoDetailsModal,
-    getPhotosByTopics
+    getPhotosByTopics,
+    getPhotosByNavBar
   } = useApplicationData();
 
   //Returns true or false if current photo is favourited in the array
@@ -25,7 +26,6 @@ const App = () => {
   
   return (
     <div className="App">
-      {/* { Array.from(Array(3)).map((_, index) => <PhotoListItem key={index} photo={sampleDataForPhotoListItem} />) } */}
       <HomeRoute 
       photos={state.photoData} 
       topics={state.topicData}
@@ -34,8 +34,8 @@ const App = () => {
       isFavPhotoExist={isFavPhotoExist}
       setPhotoSelected={setPhotoSelected}
       getPhotosByTopics={getPhotosByTopics}
+      getPhotosByNavBar={getPhotosByNavBar}
       />
-      
       
       {state.displayModal && 
         <PhotoDetailsModal 
