@@ -5,7 +5,7 @@ import "../styles/TopicListItem.scss";
 const TopicListItem = (props) => {
   return (
     <div className="topic-list__item">
-      <div>{props.topic.title}</div>
+      <div onClick={() => props.getPhotosByTopics(props.topic.id)}>{props.topic.title}</div>
     </div>
   );
 };

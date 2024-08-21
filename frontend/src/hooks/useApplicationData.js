@@ -5,7 +5,8 @@ const INITIAL_STATE = {
   displayModal: false,
   selectPhoto: {},
   photoData: [],
-  topicData: []
+  topicData: [],
+  topicState: ''
 }
 
 export const ACTIONS = {
@@ -13,9 +14,11 @@ export const ACTIONS = {
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
+  SET_TOPIC_STATE: 'SET_TOPIC_STATE',
   SELECT_PHOTO: 'SELECT_PHOTO',
   CLOSE_PHOTO: 'CLOSE_PHOTO',
-  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
+  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
+  GET_PHOTOS_BY_TOPICS: 'http://localhost:8001/api/topics/photos/:topic_id'
 }
 
 function reducer(state, action) {
@@ -37,6 +40,9 @@ function reducer(state, action) {
     
     case ACTIONS.SET_TOPIC_DATA:
       return {...state, topicData: action.payload}
+    
+    case ACTIONS.SET_TOPIC_STATE:
+      return {...state, topicState: action.payload};
 
     default:
       throw new Error(
@@ -69,6 +75,21 @@ const useApplicationData = () => {
     })
   }, [])
 
+  //useEffect: :topic_id
+  useEffect(() => {
+    const topic_id = state.topicState;
+    fetch(`/api/topics/photos/${topic_id}`)
+      .then(response => response.json())
+      .then(data => {
+        dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: data})
+      })
+
+  }, [state.topicState])
+
+  const getPhotosByTopics = (topic_id) => {
+    //dispatch and change the topic state
+    dispatch({type: ACTIONS.SET_TOPIC_STATE, payload: topic_id});
+  }
 
 
   //Adds or removes photo from array when user clicks on favourite
@@ -88,12 +109,15 @@ const useApplicationData = () => {
   const onClosePhotoDetailsModal = () => {
     dispatch({type: ACTIONS.CLOSE_PHOTO})
   }
+  
+
 
   return {
     state,
     updateToFavPhotoIds,
     setPhotoSelected,
-    onClosePhotoDetailsModal
+    onClosePhotoDetailsModal,
+    getPhotosByTopics
   }
 }
 

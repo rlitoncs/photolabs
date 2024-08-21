@@ -11,7 +11,8 @@ const App = () => {
     state,
     updateToFavPhotoIds,
     setPhotoSelected,
-    onClosePhotoDetailsModal
+    onClosePhotoDetailsModal,
+    getPhotosByTopics
   } = useApplicationData();
 
   //Returns true or false if current photo is favourited in the array
@@ -32,6 +33,7 @@ const App = () => {
       toggleFavourites={updateToFavPhotoIds}
       isFavPhotoExist={isFavPhotoExist}
       setPhotoSelected={setPhotoSelected}
+      getPhotosByTopics={getPhotosByTopics}
       />
       
       
