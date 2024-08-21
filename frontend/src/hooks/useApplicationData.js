@@ -1,9 +1,11 @@
-import { useState, useReducer } from "react";
+import { useState, useReducer, useEffect} from "react";
 
 const INITIAL_STATE = {
   favourites: [],
   displayModal: false,
-  selectPhoto: {}
+  selectPhoto: {},
+  photoData: [],
+  topicData: []
 }
 
 export const ACTIONS = {
@@ -29,6 +31,12 @@ function reducer(state, action) {
 
     case ACTIONS.CLOSE_PHOTO:
       return {...state, displayModal: false}
+    
+    case ACTIONS.SET_PHOTO_DATA:
+      return {...state, photoData: action.payload}
+    
+    case ACTIONS.SET_TOPIC_DATA:
+      return {...state, topicData: action.payload}
 
     default:
       throw new Error(
@@ -38,7 +46,30 @@ function reducer(state, action) {
 }
 
 const useApplicationData = () => { 
+  
+  // useReducer
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
+
+
+  //useEffect: photos 
+  useEffect(() => {
+    fetch('/api/photos')
+      .then(response => response.json())
+      .then(data => {
+        dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: data});
+      });
+  }, []);
+
+  //useEffect: topics
+  useEffect(() => {
+    fetch('/api/topics')
+    .then(response => response.json())
+    .then(data => {
+      dispatch({type: ACTIONS.SET_TOPIC_DATA, payload: data})
+    })
+  }, [])
+
+
 
   //Adds or removes photo from array when user clicks on favourite
   const updateToFavPhotoIds = (photo_id) => {
