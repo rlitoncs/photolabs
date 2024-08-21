@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   selectPhoto: {},
   photoData: [],
   topicData: [],
-  topicState: ''
+  topicState: null
 }
 
 export const ACTIONS = {
@@ -18,7 +18,6 @@ export const ACTIONS = {
   SELECT_PHOTO: 'SELECT_PHOTO',
   CLOSE_PHOTO: 'CLOSE_PHOTO',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
-  GET_PHOTOS_BY_TOPICS: 'http://localhost:8001/api/topics/photos/:topic_id'
 }
 
 function reducer(state, action) {
@@ -52,7 +51,6 @@ function reducer(state, action) {
 }
 
 const useApplicationData = () => { 
-  
   // useReducer
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
@@ -78,11 +76,13 @@ const useApplicationData = () => {
   //useEffect: :topic_id
   useEffect(() => {
     const topic_id = state.topicState;
-    fetch(`/api/topics/photos/${topic_id}`)
-      .then(response => response.json())
-      .then(data => {
-        dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: data})
-      })
+    if (topic_id) {
+      fetch(`/api/topics/photos/${topic_id}`)
+        .then(response => response.json())
+        .then(data => {
+          dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: data})
+        })
+    }
 
   }, [state.topicState])
 
