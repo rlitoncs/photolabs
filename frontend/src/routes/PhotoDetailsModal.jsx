@@ -4,16 +4,17 @@ import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 import '../styles/PhotoDetailsModal.scss';
 import '../styles/PhotoListItem.scss';
+import { forwardRef } from 'react';
 
-const PhotoDetailsModal = (props) => {
+const PhotoDetailsModal = forwardRef(({photo, isFavourite, toggleFavourites, setPhotoSelected, onClosePhotoDetailsModal}, ref) => {
 
-  const similarPhotos = props.photo.similar_photos;
+  const similarPhotos = photo.similar_photos;
   return (
     // Modal Container
     <div className="photo-details-modal">
 
       {/* Close Button */}
-      <button className="photo-details-modal__close-button" onClick={props.onClosePhotoDetailsModal}>
+      <button className="photo-details-modal__close-button" onClick={onClosePhotoDetailsModal}>
         <img src={closeSymbol} alt="close symbol"/>
       </button>
 
@@ -22,13 +23,13 @@ const PhotoDetailsModal = (props) => {
 
         {/* Favourite Button */}
         <PhotoFavButton 
-          id={props.photo.id} 
-          isFavourite={props.isFavourite} 
-          toggleFavourites={props.toggleFavourites}/>
+          id={photo.id} 
+          isFavourite={isFavourite} 
+          toggleFavourites={toggleFavourites}/>
 
         {/* Image Selected in Modal*/}
-        <img className="photo-details-modal__image" 
-          src={props.photo.urls.full} 
+        <img ref={ref} className="photo-details-modal__image" 
+          src={photo.urls.full} 
         />
         
         {/* Photographer Details Container */}
@@ -36,12 +37,12 @@ const PhotoDetailsModal = (props) => {
           <div className="photo-list__user-details">
             <img 
               className="photo-list__user-profile" 
-              src={props.photo.user.profile}>
+              src={photo.user.profile}>
             </img>
             <div className="photo-list__user-info" >
-              <span>{props.photo.user.username}</span>
+              <span>{photo.user.username}</span>
               <div className="photo-list__user-location">
-                {props.photo.location.city}, {props.photo.location.country}
+                {photo.location.city}, {photo.location.country}
               </div>
             </div>
           </div>
@@ -55,14 +56,15 @@ const PhotoDetailsModal = (props) => {
 
       <div className="photo-details-modal__top-bar">
         <PhotoList 
-          isFavourite={props.isFavourite} 
-          toggleFavourites={props.toggleFavourites} 
+          isFavourite={isFavourite} 
+          toggleFavourites={toggleFavourites} 
+          setPhotoSelected={setPhotoSelected}
           photos={similarPhotos}
           />
       </div>
 
     </div>
   )
-};
+});
 
 export default PhotoDetailsModal;

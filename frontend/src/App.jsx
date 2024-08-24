@@ -12,6 +12,7 @@ const App = () => {
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotoDetailsModal,
+    photoRef
   } = useApplicationData();
 
   //Check whether selected photo is favourited
@@ -40,7 +41,9 @@ const App = () => {
           photo={selectPhoto}
           isFavourite={isFavourite}
           toggleFavourites={updateToFavPhotoIds}
+          setPhotoSelected={setPhotoSelected}
           onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+          ref={photoRef}
         />
       }
     </div>
