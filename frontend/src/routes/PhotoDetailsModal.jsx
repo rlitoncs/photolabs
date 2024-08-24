@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
@@ -6,11 +6,8 @@ import '../styles/PhotoDetailsModal.scss';
 import '../styles/PhotoListItem.scss';
 
 const PhotoDetailsModal = (props) => {
-  const similarPhotos = props.photo.similar_photos;
-  const similarPhotosArr = Object.keys(similarPhotos).map(key => {
-    return similarPhotos[key]
-  })
 
+  const similarPhotos = props.photo.similar_photos;
   return (
     // Modal Container
     <div className="photo-details-modal">
@@ -60,7 +57,7 @@ const PhotoDetailsModal = (props) => {
         <PhotoList 
           isFavourite={props.isFavourite} 
           toggleFavourites={props.toggleFavourites} 
-          photos={similarPhotosArr}
+          photos={similarPhotos}
           />
       </div>
 
