@@ -6,7 +6,7 @@ import useApplicationData from 'hooks/useApplicationData';
 const App = () => {
   
   const {
-    state,
+    state: { favourites, photoData, topicData, selectPhoto, displayModal},
     getPhotosByNavBar,
     getPhotosByTopics,
     updateToFavPhotoIds,
@@ -16,31 +16,31 @@ const App = () => {
 
   //Check whether selected photo is favourited
   const isFavourite = (photo_id) => {
-    return state.favourites.includes(photo_id);
+    return favourites.includes(photo_id);
   }  
 
   // Check if any photo has been favourited
-  const isFavPhotoExist = state.favourites.length > 0;
+  const isFavPhotoExist = favourites.length > 0;
   
   return (
     <div className="App">
       <HomeRoute 
-      photos={state.photoData} 
-      topics={state.topicData}
+      photos={photoData} 
+      topics={topicData}
       isFavourite={isFavourite}
-      toggleFavourites={updateToFavPhotoIds}
       isFavPhotoExist={isFavPhotoExist}
-      setPhotoSelected={setPhotoSelected}
+      toggleFavourites={updateToFavPhotoIds}
       getPhotosByTopics={getPhotosByTopics}
       getPhotosByNavBar={getPhotosByNavBar}
+      setPhotoSelected={setPhotoSelected}
       />
       
-      {state.displayModal && 
-        <PhotoDetailsModal 
-          onClosePhotoDetailsModal={onClosePhotoDetailsModal}
-          photo={state.selectPhoto}
+      {displayModal && 
+        <PhotoDetailsModal
+          photo={selectPhoto}
           isFavourite={isFavourite}
           toggleFavourites={updateToFavPhotoIds}
+          onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         />
       }
     </div>
