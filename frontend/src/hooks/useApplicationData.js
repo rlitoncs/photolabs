@@ -8,7 +8,8 @@ const INITIAL_STATE = {
   selectPhoto: {},
   topicState: null,
   navBarLogo: true,
-  displayModal: false
+  displayModal: false,
+  theme: ''
 }
 
 export const ACTIONS = {
@@ -18,6 +19,7 @@ export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SET_TOPIC_STATE: 'SET_TOPIC_STATE',
+  SET_THEME: 'SET_THEME',
   SELECT_PHOTO: 'SELECT_PHOTO',
   CLOSE_PHOTO: 'CLOSE_PHOTO',
 }
@@ -42,6 +44,9 @@ function reducer(state, action) {
     
     case ACTIONS.SET_TOPIC_STATE:
       return {...state, topicState: action.payload};
+    
+    case ACTIONS.SET_THEME:
+      return {...state, theme: action.payload};
 
     case ACTIONS.SELECT_PHOTO:
       return {...state, displayModal: true, selectPhoto: action.payload}
@@ -139,9 +144,14 @@ const useApplicationData = () => {
     }
   }
 
+  // Set the Theme of page
+  const setTheme = () => {
+    !state.theme ? dispatch({type: ACTIONS.SET_THEME, payload: 'dark' }) : dispatch({type: ACTIONS.SET_THEME, payload: '' });
+  }
+
   // Update state when user clicks the close button on modal
   const onClosePhotoDetailsModal = () => {
-    dispatch({type: ACTIONS.CLOSE_PHOTO})
+    dispatch({type: ACTIONS.CLOSE_PHOTO});
   }
   
   //JSX ===========================================================================
@@ -153,7 +163,8 @@ const useApplicationData = () => {
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotoDetailsModal,
-    photoRef
+    photoRef,
+    setTheme
   }
 }
 
