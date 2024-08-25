@@ -42,5 +42,5 @@ npm start
 
 ## Features
 - A user can like/unlike as many photos as they want
-- Users can switch between light and dark themes by clicking the lightbulb icon in the top right corne
+- Users can switch between light and dark themes by clicking the lightbulb icon in the top right corner
 - Alongside a selected photo, users will also be shown similar photos to choose from
