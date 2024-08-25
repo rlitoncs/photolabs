@@ -13,6 +13,11 @@
 }
 
 .photo-list__fav-icon-svg {
-  padding: 7px;
+  padding: 6px;
   top: 2px;
+
+  svg{
+    width: 21px;
+    height: 20px;
+  }
 }
