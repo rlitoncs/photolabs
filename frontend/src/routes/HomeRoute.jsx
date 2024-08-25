@@ -3,7 +3,7 @@ import TopNavigationBar from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = ({photos, topics, isFavourite, isFavPhotoExist, toggleFavourites, getPhotosByTopics, getPhotosByNavBar, setPhotoSelected}) => {
+const HomeRoute = ({photos, topics, isFavourite, isFavPhotoExist, toggleFavourites, getPhotosByTopics, getPhotosByNavBar, setPhotoSelected, setTheme, theme}) => {
 
   return (
     <div className="home-route"> 
@@ -12,12 +12,15 @@ const HomeRoute = ({photos, topics, isFavourite, isFavPhotoExist, toggleFavourit
         isFavPhotoExist={isFavPhotoExist}
         getPhotosByTopics={getPhotosByTopics}
         getPhotosByNavBar={getPhotosByNavBar}
+        setTheme={setTheme}
+        theme={theme}
         />
       <PhotoList 
         photos={photos}
         isFavourite={isFavourite}
         toggleFavourites={toggleFavourites}
         setPhotoSelected={setPhotoSelected}
+        theme={theme}
       />
     </div>
   );

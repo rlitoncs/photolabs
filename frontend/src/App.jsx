@@ -1,18 +1,19 @@
 import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import './App.scss';
 import useApplicationData from 'hooks/useApplicationData';
+import './App.scss';
 
 const App = () => {
   
   const {
-    state: {favourites, photoData, topicData, selectPhoto, displayModal},
+    state: {favourites, photoData, topicData, selectPhoto, displayModal, theme},
     getPhotosByNavBar,
     getPhotosByTopics,
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotoDetailsModal,
-    photoRef
+    photoRef,
+    setTheme
   } = useApplicationData();
 
   //Check whether selected photo is favourited
@@ -24,7 +25,7 @@ const App = () => {
   const isFavPhotoExist = favourites.length > 0;
   
   return (
-    <div className="App">
+    <div className={`App-${theme}`}>
       <HomeRoute 
       photos={photoData} 
       topics={topicData}
@@ -34,6 +35,8 @@ const App = () => {
       getPhotosByTopics={getPhotosByTopics}
       getPhotosByNavBar={getPhotosByNavBar}
       setPhotoSelected={setPhotoSelected}
+      setTheme={setTheme}
+      theme={theme}
       />
       
       {displayModal && 
@@ -44,6 +47,7 @@ const App = () => {
           setPhotoSelected={setPhotoSelected}
           onClosePhotoDetailsModal={onClosePhotoDetailsModal}
           ref={photoRef}
+          theme={theme}
         />
       }
     </div>

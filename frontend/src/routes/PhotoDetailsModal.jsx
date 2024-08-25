@@ -6,15 +6,15 @@ import '../styles/PhotoDetailsModal.scss';
 import '../styles/PhotoListItem.scss';
 import { forwardRef } from 'react';
 
-const PhotoDetailsModal = forwardRef(({photo, isFavourite, toggleFavourites, setPhotoSelected, onClosePhotoDetailsModal}, ref) => {
+const PhotoDetailsModal = forwardRef(({photo, isFavourite, toggleFavourites, setPhotoSelected, onClosePhotoDetailsModal, theme}, ref) => {
 
   const similarPhotos = photo.similar_photos;
   return (
     // Modal Container
-    <div className="photo-details-modal">
+    <div className={`photo-details-modal ${theme}`}>
 
       {/* Close Button */}
-      <button className="photo-details-modal__close-button" onClick={onClosePhotoDetailsModal}>
+      <button className={`photo-details-modal__close-button ${theme}`} onClick={onClosePhotoDetailsModal}>
         <img src={closeSymbol} alt="close symbol"/>
       </button>
 
@@ -49,7 +49,7 @@ const PhotoDetailsModal = forwardRef(({photo, isFavourite, toggleFavourites, set
         </div>
 
         {/* Similar Photo Header */}
-        <div className="photo-details-modal__header">
+        <div className={`photo-details-modal__header ${theme}`}>
           <strong>Similar Photos</strong>
         </div>
       </div>
@@ -60,6 +60,7 @@ const PhotoDetailsModal = forwardRef(({photo, isFavourite, toggleFavourites, set
           toggleFavourites={toggleFavourites} 
           setPhotoSelected={setPhotoSelected}
           photos={similarPhotos}
+          theme={theme}
           />
       </div>
 

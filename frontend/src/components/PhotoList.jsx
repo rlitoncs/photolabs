@@ -2,7 +2,7 @@ import React from "react";
 import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
-const PhotoList = ({photos, isFavourite, toggleFavourites, setPhotoSelected}) => {
+const PhotoList = ({photos, isFavourite, toggleFavourites, setPhotoSelected, theme}) => {
 
   return (
     <ul className="photo-list">
@@ -13,6 +13,7 @@ const PhotoList = ({photos, isFavourite, toggleFavourites, setPhotoSelected}) =>
                 isFavourite={isFavourite}
                 toggleFavourites={toggleFavourites}
                 setPhotoSelected={setPhotoSelected}
+                theme={theme}
                 />
       })}
     </ul>

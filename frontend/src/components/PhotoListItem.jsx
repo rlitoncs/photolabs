@@ -2,10 +2,10 @@ import React from "react";
 import PhotoFavButton from './PhotoFavButton'
 import "../styles/PhotoListItem.scss";
 
-const PhotoListItem = ({photo, isFavourite, toggleFavourites, setPhotoSelected}) => {
+const PhotoListItem = ({photo, isFavourite, toggleFavourites, setPhotoSelected, theme}) => {
 
   return (
-    <div className="photo-list__item">
+    <div className={`photo-list__item ${theme}`}>
       <PhotoFavButton 
         id={photo.id}
         isFavourite={isFavourite}
