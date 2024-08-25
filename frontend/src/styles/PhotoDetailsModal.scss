@@ -11,6 +11,10 @@
   border-radius: 12px;
 }
 
+.photo-details-modal.dark{
+  background-color: #222;
+}
+
 .photo-details-modal__close-button {
   background-color: white;
   border: none;
@@ -22,6 +26,10 @@
   cursor: pointer;
   margin-left: 16px;
   margin-top: 16px;
+}
+
+.photo-details-modal__close-button.dark{
+  background-color: #222;
 }
 
 .photo-details-modal__images {
@@ -55,6 +63,10 @@
   margin-top: 24px;
   margin-bottom: 24px;
   width: 90%;
+}
+
+.photo-details-modal__header {
+  color: white;
 }
 
 .photo-details-modal__photographer-location {
