@@ -1,5 +1,5 @@
 # react-photolabs
-Photolabs is a Single Page Application built with React and Express. It showcases an album of photos where users can select and view different kinds of photos as well as filter them by a topic
+"Photolabs is a Single Page Application developed with React and Express, featuring a photo gallery where users can browse, view, and filter images by topic
 
 # Photolabs
 ### Home Page <Theme: `Light`>
